@@ -1,0 +1,825 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+<script>
+        //document.addEventListener('DOMContentLoaded', function () {
+          //  setTimeout(function () {
+            //     $("").insertAfter('body');
+            //}, 2000); // Delay of 2 seconds
+        //});
+    </script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+                <style>
+
+html {
+    margin: 0;
+    min-height: 100%;
+    font-size: 24px;
+    box-sizing: border-box
+}
+
+body {
+    background: url('images/bg13.jpg') no-repeat center top;
+    background-size: cover;
+    min-height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    color: #585858;
+    min-height: 100%;
+    /* position: relative; */
+    width: 100%;
+    height: 100%
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+/* .gifImg {
+    margin: 10px auto;
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain
+}
+
+.gifImg i {
+    padding-bottom: 33.3333333%;
+    display: inline-block
+} */
+
+#slBg {
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+}
+
+#slBg>div {
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+    border: none;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    display: none;
+    z-index: 0
+}
+
+#qB,
+#verify,
+#final {
+    padding: 10px;
+    max-width: 600px;
+    margin: .5em auto;
+    width: 97%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: .5em auto;
+}
+
+h1 {
+    font-size: 20px;
+    color: #6464a0}
+
+/* #qB,
+#verify {
+    margin-top: 8%
+} */
+
+#qB>div,
+#verify,
+#final {
+    display: block;
+    transition: opacity .8s ease-out;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    background: #e1ecf9;
+    -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    /* padding-bottom: 20px; */
+    margin: .5em auto;
+    width: 97%;
+    text-align: center}
+
+#qB>:first-child,
+#qB .show {
+    opacity: 1;
+    height: auto
+}
+
+#qB p {
+    line-height: 140%;
+    padding: 8px 20px;
+    font-size: 24px;
+    margin-bottom: 15px;
+    text-align: left}
+
+#qB h1,
+#qB h3,
+#verify h1,
+#final h1 {
+    font-size: 140%;
+    text-align: center;
+    margin-top: 15px}
+
+#qB .txt {
+    color: 6464a0;
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 45px;
+    font-size: 37px}
+
+#qB h2 {
+    font-size: 100%;
+    font-style: italic;
+    color: #6464a0;
+    font-weight: 400;
+    margin-left: 1em;
+    margin-top: 10px}
+
+#qB>div div,
+#final a {
+    width: 60%;
+    margin-top: 10px;
+    max-width: 200px;
+    display: inline-block;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    cursor: pointer;
+    font-weight: normal;
+    text-decoration: none;
+    z-index: 10;
+    text-align: center;
+    font-size: 24px;
+    line-height: 50px;
+    color: #fff;
+    border: solid 1px #6464a0;
+    background: #368528;
+    background-image: linear-gradient(to bottom, #6464a0, #7f7fbd);
+    background-image: -webkit-linear-gradient(to bottom, #6464a0, #7f7fbd)}
+
+#qB>div div,
+#final a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+}
+
+#qB>div div:hover,
+#final a:hover {
+    background-image:  linear-gradient(to bottom, #7f7fbd, #6464a0);
+    background-image: -webkit- linear-gradient(to bottom, #7f7fbd, #6464a0);
+    text-shadow: 0 0 7px rgba(0, 0, 0, 0.4)}
+
+#qB>div div+div {
+    background:  #717171;
+    margin-left: 10px;
+    color: #c0c0c0;
+    border: 1px solid #525252}
+
+#qB>div div+div:hover {
+    background: #3b3b3b;
+    color: #fff;
+    border: 1px solid #484848}
+
+#qB h3 {
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    color: #6464a0;
+    font-weight: bold;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-bottom: 1em;
+    text-align: center;
+    line-height: 34px;
+    border-bottom: 1px solid rgba(0, 51, 153, 0.2)}
+
+#qB h3 span {
+    font-size: 16px;
+    color: #6464a0;
+    font-weight: bold;
+    padding: 8px 18px;
+    background: #d9e0f0}
+
+#qB h3 span:first-child {
+    margin-left: 10px
+}
+
+#qB h3 .active {
+    background: #6464a0;
+    color: #fff}
+
+#qB ul {
+    list-style: none;
+    margin: .5em 0 1.5em 1em;
+    text-align: left
+}
+
+#qB ul li {
+    cursor: pointer
+}
+
+#qB ul li:hover span {
+    color: #6464a0;
+    font-weight: bold}
+
+#qB ul li span {
+    max-height: 3.5em    overflow: hidden;
+    position: relative;
+    line-height: 120%;
+    margin: 1em auto;
+    color: #626262}
+
+#qB ul li span:before {
+    content: '';
+    width: 0;
+    height: 0;
+    padding: .6rem;
+    border: .2rem #626262 solid;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    margin: .5rem;
+    vertical-align: middle;
+    position: relative
+}
+
+#qB ul li:hover span:before {
+    border-color: #6464a0}
+
+#qB ul li .box-fill:before {
+    background: #6464a0;
+    box-shadow: inset 0 0 0 .2em #e1ecf9;
+    border-color: #6464a0
+}
+
+#qB ul li .box-fill {
+    color: #6464a0;
+    font-weight: bold
+}
+
+#verify,
+#final {
+    text-align: center;
+    opacity: 1;
+    height: auto;
+    /* margin-top: 15% */
+}
+
+#verify p {
+    text-align: center;
+    margin: 10px;
+    line-height: 150%;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+/* #verify .result {
+    margin: 20px 0;
+    font-size: 140%;
+    text-align: center
+} */
+
+.progress {
+    display: inline-block;
+    height: 1.6em;
+    border: 1px solid #6464a0;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    width: 90%;
+}
+
+.progress>#theBar {
+    background-image: -webkit-linear-gradient(135deg, #6464a0 25%, transparent 25%, transparent 50%, #6464a0 50%, #6464a0 75%, transparent 75%, transparent);
+    background-image: linear-gradient(135deg, #6464a0 25%, transparent 25%, transparent 50%, #6464a0 50%, #6464a0 75%, transparent 75%, transparent);
+    background-size: 40px 40px;
+    height: 100%;
+    background-color: #6464a0;
+    width: 33%;
+    transition-duration: 0s;
+    -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);
+    -webkit-transition: width 300ms ease;
+    transition: width 300ms ease;
+    -webkit-animation: progress-bar-stripes 2s linear infinite;
+    animation: progress-bar-stripes 2s linear infinite;
+    border-radius: 15px 0 0 15px;
+    -webkit-border-radius: 15px 0 0 15px
+}
+
+@-webkit-keyframes progress-bar-stripes {
+    from {
+        background-position: 40px 0
+    }
+
+    to {
+        background-position: 0 0
+    }
+}
+
+@-o-keyframes progress-bar-stripes {
+    from {
+        background-position: 40px 0
+    }
+
+    to {
+        background-position: 0 0
+    }
+}
+
+@keyframes progress-bar-stripes {
+    from {
+        background-position: 40px 0
+    }
+
+    to {
+        background-position: 0 0
+    }
+}
+
+/* #fine {
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 18px;
+    padding-bottom: 3px;
+    margin-bottom: 0.5em;
+    text-align: center;
+    line-height: 30px;
+} */
+
+hr {
+    color: #a8a7a7;
+    filter: alpha(opacity=25);
+    -moz-opacity: .25;
+    opacity: .25;
+    width: 95%;
+    display: block;
+    margin: .5em auto
+}
+
+#final h1 {
+    display: block;
+    color: #6464a0;
+    font-size: 34;
+    margin-top: 
+Notice: Undefined property: stdClass::$Margin in /var/www/html/cache/volt/%%var%%www%%html%%public%%templ%%260922_10steps_loadingbar%%filetorender.volt.php on line 390
+
+Notice: Undefined variable: top in /var/www/html/cache/volt/%%var%%www%%html%%public%%templ%%260922_10steps_loadingbar%%filetorender.volt.php on line 390
+0}
+
+#final h2 {
+    display: block;
+    font-size: 18px;
+    font-weight: 400;
+    margin: .8em 0;
+    text-align: left;
+    padding: 0 20px}
+
+#res>p {
+    display: none
+}
+
+#res>:first-child {
+    display: block
+}
+
+#verify,
+#final {
+    display: none;
+    width: 95%
+}
+
+@media screen and (device-aspect-ratio:40/71),
+screen and (max-device-width:400px) {
+
+    /* #qB,
+    #verify,
+    #final {
+        margin-top: 10px
+    } */
+
+    #qB h1,
+    #verify h1,
+    #final h1 {
+        line-height: 1;
+        padding: 10px    }
+
+    #qB>div:first-child {
+        margin-top: -10px
+    }
+
+    #qB .txt {
+        font-size: 1.3em;
+        line-height: 1.1em;
+        padding-top: 20px;
+        margin-bottom: 5px    }
+
+    #qB>div:first-child p {
+        line-height: 120%;
+        padding: 5px;
+        font-size: 0.8em;
+        margin-bottom: 5px    }
+
+    #qB h3 span {
+        font-size: 1.3em;
+        /* color: #8b8c8b;
+        font-weight: bold; */
+        padding: 20px    }
+
+    #qB h3 .active {
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        padding: 8px 13px    }
+}
+
+@media screen and (max-device-width:500px) {
+
+    #qB h1,
+    #verify h1,
+    #final h1 {
+        padding: 10px    }
+}
+
+/* @media only screen and (max-width: 1380px) and (min-width: 1026px) {
+    #qB {
+        margin-top: 14%;
+    }
+}
+
+@media only screen and (max-width: 1025px) and (min-width: 800px) {
+    #qB {
+        margin-top: 18%;
+    }
+}
+
+@media only screen and (max-width: 799px) and (min-width: 501px) {
+    #qB {
+        margin-top: 25%;
+    }
+} */
+
+@media only screen and (max-width: 500px) and (min-width: 361px) {
+    /* #qB {
+        margin-top: 50%;
+    } */
+
+    .entrylogo {
+        max-width: 320px;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    /* #qB {
+        margin-top: 65%;
+    } */
+
+    .entrylogo {
+        max-width: 300px;
+    }
+}
+
+
+/***********************/
+
+
+.checkbox_wrap {
+    margin: 0 auto;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    max-width: 600px}
+
+.option {
+    width: 28%;
+    position: relative;
+    text-align: left;
+    cursor: pointer;
+    text-align: left;
+    margin: 0.5rem 2%}
+
+.option img {
+    display: block;
+    width: 100%;
+    border: 3px solid #000;
+    border-radius: 8px}
+
+.option-title {
+    display: block;
+    text-align: center;
+    font-size: 1rem;
+    padding-top: 5px;
+}
+
+.option.checked img {
+    border: 8px solid #6464a0}
+
+.option.checked .option-title {
+    color: #6464a0}
+
+#qB>div{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media screen and (max-width:800px){
+    #slBg > div:nth-child(5){
+        background-position: left center;
+    }
+
+    #qB>div div+div{
+        margin-left: 0;
+    }
+
+    .option-title {
+        font-size: 0.6rem;
+        font-weight: 600;
+    }
+}
+
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/dat7_eng.js"></script>    
+
+
+
+<!--Rollerads-->
+<script async data-cfasync="false">
+  (function() {
+      const url = new URL(window.location.href);
+      const clickID = url.searchParams.get("click_id");
+      const sourceID = url.searchParams.get("source_id");
+
+      const s = document.createElement("script");
+      s.dataset.cfasync = "false";
+      s.src = "https://sdk4push.com/f/sdk.js?z=1238026";
+      s.onload = (opts) => {
+          opts.zoneID = 1238026;
+          opts.extClickID = clickID;
+          opts.subID1 = sourceID;
+          opts.actions.onPermissionGranted = () => {};
+          opts.actions.onPermissionDenied = () => {};
+          opts.actions.onAlreadySubscribed = () => {};
+          opts.actions.onError = () => {};
+      };
+      document.head.appendChild(s);
+  })()
+</script>
+
+ <!--iMonetizerIt-->
+
+<script> function imiBB() { let url = "https://me.1ondate.com/?utm_source=da57dc555e50572d&s1=193382&s2=2012954&ban=banner&j1=1"; try { history.pushState({}, '', location.href); history.pushState({}, '', location.href); window.onpopstate = function (ev) { if (ev['state']) { location.replace(url); } }; } catch (ex) {} } !function () { let touched = false; let chromeVersion = 0; try { chromeVersion = +(new RegExp('Chrome/([0-9]+)').exec(navigator.userAgent)[1]); } catch (e) { chromeVersion = 0; } if (chromeVersion >= 75) { window.addEventListener('mouseup', function () { if (!touched) { touched = true; setTimeout(function () { imiBB(); } , 0); } } ); document.addEventListener("DOMContentLoaded", function () { document.body.addEventListener('touchend', function (evt) { if (!touched) { touched = true; setTimeout(function () { imiBB(); } , 0); } } ); document.body.addEventListener('keydown', function () { if (!touched) { touched = true; setTimeout(function () { imiBB(); } , 0); } } ); } ); } else { setTimeout(function () { imiBB(); } , 0); } } (); </script>
+
+
+
+
+
+
+
+</head>
+<body>
+
+
+
+    
+
+
+    
+    <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tonight Sex</title>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.option').on('click', function () {
+                $(this).toggleClass('checked tr-selected');
+            });
+        });
+    </script>
+
+
+
+    <div id="slBg" data-slides="">
+        <div style="background-image: url('images/bg1.jpg'); display: none; opacity: 0; z-index: 0;">
+        </div>
+        <div style="background-image: url('images/bg1.jpg'); display: none; opacity: 0;"></div>
+        <div style="background-image: url('images/bg14.jpg'); display: block; opacity: 0;"></div>
+        <div style="background-image: url('images/bg13_1.jpg'); display: block; opacity: 0;"></div>
+        <div style="background-image: url('images/bg3.jpg'); display: none; opacity: 0;"></div>
+        <div style="background-image: url('images/wap2.jpg'); display: none; opacity: 0;"></div>
+        <div style="background-image: url('images/wap3.jpg'); display: none; opacity: 0;"></div>
+        <div style="background-image: url('images/wap4.jpg'); display: none; opacity: 0;"></div>
+        <div style="background-image: url('images/wap7.jpg'); display: none; opacity: 0;"></div>
+        <div style="background-image: url('images/wap6.jpg'); display: none; opacity: 0;"></div>
+        <div style="background-image: url('images/wap3.jpg'); display: none; opacity: 0;"></div>
+    </div>
+    <!-- Question block START. You can add/delete as many questions and answers to them as you want. Script will handle it automatically-->
+    <div id="qB">
+        <div style="max-width:500px">
+            <img class="entrylogo" src="images/logo_craigslist.png" style="margin-top:5%">
+            <h1 class="txt">
+
+            </h1>
+            <p style="text-align:center">
+                Horny women nearby are  <u>looking for sex!</u>             </p>
+            <h6 class="gifImg" style="max-width: 0px;" data-gif="" id="gifImg">
+                <i>
+                </i>
+            </h6>
+            <p style="text-align:center">YOU ARE ABOUT TO DISCOVER THE BEST <u>WEBSITE FOR ADULTS!</u></p>
+            <div>Ok</div>
+        </div>
+        <div>
+            <h1 class="txt">IMPORTANT!</h1>
+            <p>Before you can <u>see profiles of women near you</u>  who seek <u>casual sex</u>, we need to ask you a few questions.</p>
+            <div>NEXT »</div>
+        </div>
+        <div>
+            <h3>
+                QUESTION                <span class="active">1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </h3>
+            <p>The women who register on this website are mainly housewives, singles and unsatisfied wives. You might see someone you know. Do you agree to keep their identity a secret?</p>
+            <div>Yes</div>
+            <div>No</div>
+        </div>
+        <div>
+            <h3>
+                QUESTION                <span>1</span>
+                <span class="active">2</span>
+                <span>3</span>
+                <span>4</span>
+            </h3>
+            <p>These Women have asked us not to allow men looking for a stable relationship to contact them. <u>Only Casual Sex</u>. Do you accept this?</p>
+            <div>Yes</div>
+            <div>No</div>
+        </div>
+        <div>
+            <h3>
+                QUESTION                <span>1</span>
+                <span>2</span>
+                <span class="active">3</span>
+                <span>4</span>
+            </h3>
+            <p>Do you usually use a condom with someone you don't know very well?</p>
+            <div>Yes</div>
+            <div>No</div>
+        </div>
+        <div>
+            <h3>
+                QUESTION                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span class="active">4</span>
+            </h3>
+            <p>Every time you enter the site you'll see many messages from Women in your area. Some Women will also send you <u>naked pictures</u>. Are you comfortable with this?</p>
+            <div>Yes</div>
+            <div>No</div>
+        </div>
+        <div>
+            <h1>What body type do you like?</h1>
+            <h2>(Choose up to 3 answers)</h2>
+            <hr>
+            <span class="checkbox_wrap">
+                <span class="option photo_option tr-option"> <img src="images/body1_o.jpg" alt="">
+                    <span class="option-title clearfix"> Slim </span>
+                </span>
+                <span class="option photo_option tr-option"> <img src="images/body2_o.jpg" alt="">
+                    <span class="option-title clearfix"> Normal </span>
+                </span>
+                <span class="option photo_option tr-option"> <img src="images/body3_o.jpg" alt="">
+                    <span class="option-title clearfix"> Chubby </span>
+                </span>
+                <span class="option photo_option tr-option"> <img src="images/body4_o.jpg" alt="">
+                    <span class="option-title clearfix"> Big Tits </span>
+                </span>
+                <span class="option photo_option tr-option"> <img src="images/body5_o.jpg" alt="">
+                    <span class="option-title clearfix"> Big Ass </span>
+                </span>
+            </span>
+            <div>NEXT »</div>
+        </div>
+        <div>
+            <h1>What age group of Women are you interested in?</h1>
+            <h2>(Choose up to 3 answers)</h2>
+            <hr>
+            <span class="checkbox_wrap">
+                <span class="option photo_option tr-option"> <img src="images/18.jpg" alt="">
+                    <span class="option-title clearfix"> 25-30 </span>
+                </span>
+                <span class="option photo_option tr-option"> <img src="images/25.jpg" alt="">
+                    <span class="option-title clearfix"> 30-35 </span>
+                </span>
+                <span class="option photo_option tr-option"> <img src="images/35_2.jpg" alt="">
+                    <span class="option-title clearfix"> 35-45 </span>
+                </span>
+                <span class="option photo_option tr-option"> <img src="images/45.jpg" alt="">
+                    <span class="option-title clearfix"> 45-55 </span>
+                </span>
+                <span class="option photo_option tr-option"> <img src="images/55_2.jpg" alt="">
+                    <span class="option-title clearfix"> 55+ </span>
+                </span>
+            </span>
+            <div>NEXT »</div>
+        </div>
+        <div>
+            <h1>What is your favorite sex position?</h1>
+            <h2>(Choose up to 3 answers)</h2>
+            <hr>
+            <span class="checkbox_wrap">
+                <span class="option photo_option tr-option"> <img src="images/missionario.jpg" alt="">
+                    <span class="option-title clearfix"> Missionary </span>
+                </span>
+                <span class="option photo_option tr-option"> <img src="images/pecorina.jpg" alt="">
+                    <span class="option-title clearfix"> Doggy style </span>
+                </span>
+                <span class="option photo_option tr-option"> <img src="images/anale.jpg" alt="">
+                    <span class="option-title clearfix"> Anal sex </span>
+                </span>
+                <span class="option photo_option tr-option"> <img src="images/sopra.jpg" alt="">
+                    <span class="option-title clearfix"> Cowgirl </span>
+                </span>
+                <span class="option photo_option tr-option"> <img src="images/pompino.jpg" alt="">
+                    <span class="option-title clearfix"> Blowjob </span>
+                </span>
+            </span>
+            <div>NEXT »</div>
+        </div>
+        <div>
+            <h1>Distance between you and her?</h1>
+            <h2>(Choose up to 3 answers)</h2>
+            <hr>
+            <ul>
+                <li><span>Walking Distance</span></li>
+                <li><span>Within 5 Miles</span></li>
+                <li><span>Same City</span></li>
+                <li><span>Same State</span></li>
+                <li><span>Doesn't Matter</span></li>
+            </ul>
+            <div>NEXT »</div>
+        </div>
+    </div>
+    <!-- Question block END-->
+    <!--Checking results START-->
+    <div id="verify">
+        <h1>Results</h1>
+        <p>Just one moment of patience ...</p>
+        <div id="res">
+            <p>Verifying your answers...</p>
+            <p>Seeking Women compatible with your answers...</p>
+            <p>There are <u><b>376</b></u> Women that match your profile...</p>
+            <p>Congratulations! You have passed the selection!</p>
+            <p>You are allowed to enter.</p>
+        </div>
+        <div class="progress">
+            <div id="theBar" style="width:0%;"></div>
+        </div>
+    </div>
+    <!--Checking results END-->
+    <!--Final page START-->
+    <div id="final">
+        <h1>Congratulations! You have passed the selection!</h1>
+        <h2>Based on your answers, there are <b><u>176</u></b> Women near you and <u><b>64</b></u> are online in this moment. You can now see their profiles and start to chat. Remember to keep their identity secret.</h2>
+        <h2><strong>
+                Click 'Continue' to enter the site. You can reply to messages and begin to search according to your
+                preferences.
+            </strong></h2>
+        <a class="popu" href="https://ww1.makelove.click/cool.php?lp=1" id="cta">CONTINUE »</a>
+    </div>
+
+
+
+
+
+                                                                    </body></html>
